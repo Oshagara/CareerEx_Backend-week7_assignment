@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ItemForm from './components/ItemForm';
+import ItemList from './components/ItemList';
 
 function App() {
+  const [trigger, setTrigger] = useState(false);
+
+  const handleAdd = () => setTrigger(!trigger);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Lost & Found</h2>
+      <ItemForm onAdd={handleAdd} />
+      <ItemList key={trigger} />
     </div>
   );
 }
